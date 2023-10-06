@@ -1,8 +1,7 @@
-#ifndef MESH_H_
-#define MESH_H_
+#pragma once
 
-#include <glad/glad.h> // gluint
-#include <glm/glm.hpp> // mat4
+#include <glad/glad.h>
+#include <glm/glm.hpp>
 
 #include <vector>
 
@@ -23,5 +22,3 @@ private:
     int m_numTriangles;
 
 };
-
-#endif

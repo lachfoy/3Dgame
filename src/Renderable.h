@@ -1,5 +1,4 @@
-#ifndef RENDERABLE_H_
-#define RENDERABLE_H_
+#pragma once
 
 // interface for 3D render objects
 // should contain
@@ -7,15 +6,14 @@
 // - transformation matrices
 // - material/texture properties
 
+#include "Entity3D.h"
 #include <glm/glm.hpp>
 
 class Mesh;
 class Texture;
-class Renderer3D;
 
-class iRenderable
+class iRenderable : public Entity3D
 {
-friend class Renderer3D;
 public:
     iRenderable() = default;
     ~iRenderable() {}
@@ -26,5 +24,3 @@ protected:
     Texture* m_texture;
 
 };
-
-#endif

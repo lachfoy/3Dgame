@@ -1,5 +1,4 @@
-#ifndef SHADER_H_
-#define SHADER_H_
+#pragma once
 
 #include <glad/glad.h>
 #include <glm/glm.hpp>
@@ -24,5 +23,3 @@ private:
     GLuint m_programId = 0;
 
 };
-
-#endif

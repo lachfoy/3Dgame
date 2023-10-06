@@ -3,9 +3,7 @@
 #include "Renderer.h"
 #include "Input.h"
 #include <iostream>
-#include "Player.h"
 #include "Texture.h"
-#include "BackgroundImage.h"
 
 bool Game::Init(int width, int height, bool fullscreen, const char* title)
 {
@@ -136,83 +134,64 @@ void Game::SetupGL()
 
 void Game::Create()
 {
-	m_wizardTexture = new Texture("data/images/Wizard.png");
-	m_blackMageTexture = new Texture("data/images/BlackMage.png");
-	m_backgroundTexture = new Texture("data/images/Sky.png");
-	m_grassTexture = new Texture("data/images/Grass.png");
 
-	m_backgroundImage = new BackgroundImage(m_renderer, m_backgroundTexture, m_viewportWidth, m_viewportHeight);
-	m_grassImage = new BackgroundImage(m_renderer, m_grassTexture, m_viewportWidth, 68);
+	//m_player = new Player(m_renderer, m_wizardTexture, &gameState);
+	//m_player->SetPosition(glm::vec2(rand() % m_viewportWidth, rand() % m_viewportHeight));
 
-	m_player = new Player(m_renderer, m_wizardTexture, &gameState);
-	m_player->SetPosition(glm::vec2(rand() % m_viewportWidth, rand() % m_viewportHeight));
-
-	for (int i = 0; i < 10; i++)
-	{
-		Enemy* enemy = new Enemy(m_renderer, m_blackMageTexture, m_player);
-		enemy->SetPosition(glm::vec2(rand() % m_viewportWidth, rand() % m_viewportHeight));
-		m_enemies.push_back(std::unique_ptr<Enemy>(enemy));
-	}
+	//for (int i = 0; i < 10; i++)
+	//{
+	//	Enemy* enemy = new Enemy(m_renderer, m_blackMageTexture, m_player);
+	//	enemy->SetPosition(glm::vec2(rand() % m_viewportWidth, rand() % m_viewportHeight));
+	//	m_enemies.push_back(std::unique_ptr<Enemy>(enemy));
+	//}
 }
 
 void Game::HandleInput()
 {
-	m_player->HandleInput(m_input);
+	//m_player->HandleInput(m_input);
 }
 
 void Game::Update(float dt)
 {
-	for (const auto& enemy : m_enemies)
-	{
-		enemy->Update(dt);
+	//for (const auto& enemy : m_enemies)
+	//{
+	//	enemy->Update(dt);
 
 
-		if (enemy->GetPosition().x < -20.0f)
-		{
-			enemy->SetPosition(glm::vec2(820.0f, rand() % 600));
-		}
-	}
+	//	if (enemy->GetPosition().x < -20.0f)
+	//	{
+	//		enemy->SetPosition(glm::vec2(820.0f, rand() % 600));
+	//	}
+	//}
 
-	m_player->Update(dt);
+	//m_player->Update(dt);
 
-	for (const auto& enemy : m_enemies)
-	{
-		if (Collision(*m_player, *enemy))
-		{
-			std::cout << "Collided\n";
-		}
-	}
+	//for (const auto& enemy : m_enemies)
+	//{
+	//	if (Collision(*m_player, *enemy))
+	//	{
+	//		std::cout << "Collided\n";
+	//	}
+	//}
 }
 
 void Game::Render()
 {
-	m_backgroundImage->Render();
-	m_grassImage->Render();
+	//m_backgroundImage->Render();
+	//m_grassImage->Render();
 
-	for (const auto& enemy : m_enemies)
-	{
-		enemy->Render();
-		//enemy->RenderDebugQuad();
-	}
-	m_player->Render();
-
-	//m_renderer->AddDebugLine(glm::vec2(0.0f, 0.0f), glm::vec2(800.0f, 600.0f));
-
-	//m_player->RenderDebugQuad();
-	
-	//for (float x : gameState.lanePositionsX)
+	//for (const auto& enemy : m_enemies)
 	//{
-	//	m_renderer->AddDebugLine(glm::vec2(x, 0.0f), glm::vec2(x, 600.0f));
+	//	enemy->Render();
+	//	//enemy->RenderDebugQuad();
 	//}
+	//m_player->Render();
+
 }
 
 void Game::Destroy()
 {
-	delete m_wizardTexture;
-	delete m_blackMageTexture;
 
-	delete m_player;
-	m_player = nullptr;
 }
 
 void Game::Cleanup()

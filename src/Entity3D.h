@@ -1,11 +1,8 @@
-#ifndef ENTITY_3D_H_
-#define ENTITY_3D_H_
+#pragma once
 
 #include <glm/glm.hpp>
 
-#include "Renderable.h"
-
-class Entity3D : public iRenderable
+class Entity3D
 {
 public:
     Entity3D();
@@ -19,5 +16,3 @@ protected:
     glm::vec3 m_rotation;
 
 };
-
-#endif

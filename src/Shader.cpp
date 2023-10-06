@@ -28,7 +28,7 @@ void Shader::LoadFromFile(const char *vertex_path, const char *fragment_path)
             vertex_file.seekg(0, std::ios::beg); // set the cursor back to the begining of file
 
             vertex_source.resize(static_cast<size_t>(file_size));
-            vertex_file.read(vertex_source.data(), file_size);
+            vertex_file.read((char*)vertex_source.data(), file_size);
             vertex_file.close();
 
             const char* src = vertex_source.c_str();
@@ -61,7 +61,7 @@ void Shader::LoadFromFile(const char *vertex_path, const char *fragment_path)
             fragment_file.seekg(0, std::ios::beg); // set the cursor back to the begining of file
 
             fragment_source.resize(static_cast<size_t>(file_size));
-            fragment_file.read(fragment_source.data(), file_size);
+            fragment_file.read((char*)fragment_source.data(), file_size);
             fragment_file.close();
 
             const char* src = fragment_source.c_str();

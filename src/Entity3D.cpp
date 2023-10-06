@@ -20,5 +20,5 @@ void Entity3D::UpdateTransform()
 
     transform = glm::translate(transform, m_worldPosition);
 
-    m_transform = transform;
+    //m_transform = transform;
 }
